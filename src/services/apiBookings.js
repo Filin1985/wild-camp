@@ -8,7 +8,6 @@ export async function getBookings({filter, sortBy, page}) {
     .select("*, cabins(name), guests(fullName, email)", {count: "exact"})
 
   if (filter) query = query[filter.method || "eq"](filter.field, filter.value)
-  console.log(filter, sortBy)
   if (sortBy)
     query = query.order(sortBy.field, {ascending: sortBy.direction === "asc"})
 
